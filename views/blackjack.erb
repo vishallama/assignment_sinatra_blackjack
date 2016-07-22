@@ -1,7 +1,17 @@
 <h1>Make your move</h1>
+<div class="dealer">
+  <% dealer_hand.each do |card| %>
+    <%= card[0] %> <%= card[1] %>
+  <% end %>
+</div>
+<div class="player" >
+  <% player_hand.each do |card| %>
+    <%= card[0] %> <%= card[1] %>
+  <% end %>
+</div>
+
 <form action="/blackjack" method="post">
   <input type="radio" name="move" value="hit">Hit</input>
   <input type="radio" name="move" value="stay">Stay</input>
   <input type="submit" value="Submit">
 </form>
-
