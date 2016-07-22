@@ -104,3 +104,7 @@ get '/blackjack/stay' do
               player_hand: @player_hand,
               winner_flag: winner_flag }
 end
+
+get '/blackjack/hit' do
+  redirect to('/')
+end
