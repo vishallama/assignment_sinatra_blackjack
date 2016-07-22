@@ -4,7 +4,7 @@ class Deck
   attr_reader :deck
 
   SUITS = %w{Spades Diamonds Hearts Clubs}
-  RANKS = (2..10).to_a + %w{Jack King Queen Ace}
+  RANKS = ("2".."10").to_a + %w{Jack King Queen Ace}
 
   def initialize(deck = SUITS.product(RANKS).shuffle)
     @deck = deck

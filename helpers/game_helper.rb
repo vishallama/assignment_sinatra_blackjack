@@ -24,7 +24,6 @@ module GameHelper
 
   def hand_total(hand)
     hand.inject(0) do |sum, card|
-      binding.pry
       sum + VALUE[card[1]]
     end
   end
