@@ -3,7 +3,7 @@ require 'json'
 module GameHelper
   VALUE = {}
   "2".upto("10") {|num| VALUE[num] = num.to_i }
-  VALUE["Ace"] = 11
+  VALUE["Ace"] = 1
   VALUE["King"] = 10
   VALUE["Queen"] = 10
   VALUE["Jack"] = 10
@@ -23,8 +23,16 @@ module GameHelper
   end
 
   def hand_total(hand)
-    hand.inject(0) do |sum, card|
+    total = hand.inject(0) do |sum, card|
       sum + VALUE[card[1]]
     end
+    if aces(hand) > 0 && total < 12
+      total += 10
+    end
+    total
+  end
+
+  def aces(hand)
+    hand.count{ |card| card[1] == "Ace" }
   end
 end

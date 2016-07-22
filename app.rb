@@ -28,7 +28,6 @@ post '/blackjack' do
   @player_hand = game[:player_hand]
   @dealer_hand = game[:dealer_hand]
   save_game(@deck.deck, @dealer_hand, @player_hand)
-  # @player_hand = @deck.hit if params[:move] == "hit"
 
   erb :blackjack, locals: { dealer_hand: @dealer_hand,
                             player_hand: @player_hand }
@@ -65,11 +64,11 @@ post '/blackjack/stay' do
 
   if hand_total(@dealer_hand) > 21 ||
       hand_total(@dealer_hand) < hand_total(@player_hand)
-    winner_flag = "player"
+    winner_flag = "Player"
   elsif hand_total(@dealer_hand) == hand_total(@player_hand)
     winner_flag = "tie"
   else
-    winner_flag = "dealer"
+    winner_flag = "Dealer"
   end
 
   erb :gameover, locals: { dealer_hand: @dealer_hand,
