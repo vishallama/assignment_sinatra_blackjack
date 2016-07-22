@@ -22,6 +22,10 @@ class Deck
     deal_one_card
   end
 
+  def push(card)
+    @deck << card
+  end
+
   def empty?
     @deck.empty?
   end
@@ -33,4 +37,3 @@ class Deck
   end
 
 end
-
