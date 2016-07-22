@@ -19,7 +19,8 @@ get '/blackjack' do
   @player_hand = @deck.deal
   save_game(@deck.deck, @dealer_hand, @player_hand)
 
-  erb :blackjack, locals: { dealer_hand: @dealer_hand, player_hand: @player_hand }
+  erb :hit, :layout => :layout,
+    locals: { dealer_hand: @dealer_hand, player_hand: @player_hand }
 end
 
 post '/blackjack' do
@@ -29,8 +30,8 @@ post '/blackjack' do
   @dealer_hand = game[:dealer_hand]
   save_game(@deck.deck, @dealer_hand, @player_hand)
 
-  erb :blackjack, locals: { dealer_hand: @dealer_hand,
-                            player_hand: @player_hand }
+  erb :hit, :layout => :layout,
+    locals: { dealer_hand: @dealer_hand, player_hand: @player_hand }
 end
 
 post '/blackjack/hit' do
@@ -48,8 +49,10 @@ post '/blackjack/hit' do
   end
 
   save_game(@deck.deck, @dealer_hand, @player_hand)
-  erb :blackjack, locals: { dealer_hand: @dealer_hand,
-                            player_hand: @player_hand }
+
+  erb :hit, :layout => :layout,
+    locals: { dealer_hand: @dealer_hand,
+              player_hand: @player_hand }
 end
 
 post '/blackjack/stay' do
@@ -71,9 +74,10 @@ post '/blackjack/stay' do
     winner_flag = "Dealer"
   end
 
-  erb :gameover, locals: { dealer_hand: @dealer_hand,
-                           player_hand: @player_hand,
-                           winner_flag: winner_flag }
+  erb :gameover, :layout => :layout,
+    locals: { dealer_hand: @dealer_hand,
+              player_hand: @player_hand,
+              winner_flag: winner_flag }
 end
 
 get '/blackjack/stay' do
@@ -95,7 +99,8 @@ get '/blackjack/stay' do
     winner_flag = "Dealer"
   end
 
-  erb :gameover, locals: { dealer_hand: @dealer_hand,
-                           player_hand: @player_hand,
-                           winner_flag: winner_flag }
+  erb :gameover, :layout => :layout,
+    locals: { dealer_hand: @dealer_hand,
+              player_hand: @player_hand,
+              winner_flag: winner_flag }
 end
